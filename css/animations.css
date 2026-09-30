@@ -1,0 +1,25 @@
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-6rem,4rem,0) scale(1.15)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes shimmer{to{background-position:200% 0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+
+/* Entrada escalonada del hero */
+.js .hero-kicker,.js .hero h1,.js .hero-lead,.js .hero .actions,.js .social,.js .status{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.js .hero h1{animation-delay:.1s}.js .hero-lead{animation-delay:.25s}.js .hero .actions{animation-delay:.4s}.js .social{animation-delay:.5s}.js .status{animation-delay:.35s}
+.hero-alias{background:linear-gradient(90deg,var(--pink),var(--pink-soft),var(--pink));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+
+/* Reveal al hacer scroll con escalonado (--i lo pone effects.js) */
+.js [data-reveal]{opacity:0;transform:translateY(24px) scale(.98);transition:opacity .6s ease calc(var(--i,0)*80ms),transform .6s cubic-bezier(.2,.7,.2,1) calc(var(--i,0)*80ms),translate .3s ease,border-color .3s ease}
+.js [data-reveal].is-visible{opacity:1;transform:none}
+.js .chips .chip{animation:pop .4s ease both;animation-delay:calc(var(--i,0)*50ms)}
+
+.phone{animation:float 6s ease-in-out infinite}
+.phone:nth-child(2){animation-delay:-2s}.phone:nth-child(3){animation-delay:-4s}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important;animation-duration:.01ms!important;animation-delay:0s!important}
+  .orbs span,.phone,.hero-alias,.js .chips .chip{animation:none!important}
+  .js [data-reveal]{opacity:1;transform:none}
+}
